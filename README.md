@@ -1,6 +1,6 @@
 🚀 BattleBucks – Real-Time Leaderboard Engine
 
-📌 Overview
+📌 Overview 
 This project implements a real-time leaderboard system for a gaming platform.
 
 The system simulates a backend game engine generating live score updates and a leaderboard module
@@ -15,16 +15,16 @@ The focus of this implementation is:
 - Collapsing animated header
 
 
-🏗 Architecture Overview
+🏗 Architecture Overview 
 The project follows a Clean MVVM Architecture with clear separation of responsibilities.
 
 engine/        → Score generation (UI-agnostic)
-leaderboard/   → Ranking & leaderboard state management
-model/         → Domain models
+leaderboard/   → Ranking & leaderboard state management 
+model/         → Domain models 
 ui/            → Activity, ViewModel, Adapter
 
 
-🔹 Module Responsibilities
+🔹 Module Responsibilities 
 1️⃣ Score Generator (Engine Layer)
 - Simulates backend score updates
 - Emits Flow<ScoreUpdate>
@@ -65,7 +65,7 @@ Activity
 - Single source of truth (LeaderboardUiState)
 
 
-🏆 Ranking Logic
+🏆 Ranking Logic 
 Sorting Rules:
 - Sort by score (DESC)
 - Same score → same rank
@@ -74,7 +74,7 @@ Sorting Rules:
 Ranking computation is isolated inside LeaderboardManager to maintain domain purity.
 
 
-🎨 UI & Animation
+🎨 UI & Animation 
 Leaderboard
 - RecyclerView + ListAdapter
 - DiffUtil prevents flickering
@@ -89,7 +89,7 @@ Collapsing Hero Header
 - Rank & score shrink but remain visible
 
 
-🧠 Performance Considerations
+🧠 Performance Considerations 
 UI Thread Safety
 - No heavy computation on Main thread
 - Ranking computed in background context
@@ -100,7 +100,7 @@ Memory Safety
 - ViewModel scope tied to lifecycle
 
 
-📱 Lifecycle Behavior
+📱 Lifecycle Behavior 
 Screen Rotation
 - ViewModel survives configuration changes
 - Score engine continues via viewModelScope
