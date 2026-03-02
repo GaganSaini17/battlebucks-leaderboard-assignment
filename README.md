@@ -109,3 +109,84 @@ App Background
 - Collection pauses due to lifecycle awareness
 - Engine continues if ViewModel alive
 - No memory leaks
+
+
+📈 Scaling Strategy
+For 1,000 Users
+- Current approach sufficient
+- HashMap lookup O(1)
+- Sorting O(n log n) acceptable
+
+For 100,000 Users
+- Maintain sorted structure instead of full re-sort
+- Use incremental ranking updates
+- Use diff-based rank update system
+- Offload ranking to backend
+- Consider pagination / windowing
+- Use immutable snapshot diffing
+
+
+🧪 Testing Strategy
+Recommended unit tests:
+- Ranking logic edge cases
+- Same score handling
+- Score update correctness
+- Rank skipping validation
+
+(Tests can be added under leaderboard module for full coverage.)
+
+🧑‍💻 Code Review Simulation
+🔴 Must Fix
+- Add unit tests for ranking logic
+- Extract magic animation numbers into constants
+- Improve seed handling for deterministic replay testing
+
+🟡 Improvement
+- Add DI (Hilt/Koin) for better testability
+- Separate animation logic into dedicated UI animator class
+- Add sealed UI state for loading/error handling
+
+🔵 Tech Debt
+- ScoreGenerator currently infinite loop without cancellation guard
+- Ranking fully recomputed per update (can optimize for large datasets)
+- No error handling for Flow emissions
+
+🚀 If Shipping in 7 Days
+Non-Negotiable
+- Correct ranking logic
+- No UI thread blocking
+- Stable scrolling performance
+- Lifecycle safety
+
+Would Defer
+- Advanced animation polish
+- Backend integration
+- Analytics
+- Feature flags
+- CI/CD setup
+
+
+👥 Team Work Division
+Junior Developer
+- UI layout
+- RecyclerView setup
+- Basic animations
+
+Mid-Level Developer
+- Leaderboard state logic
+- Ranking algorithm
+- Flow integration
+
+Lead (My Role)
+- Architecture decisions
+- Performance validation
+- Code review
+- Scaling strategy
+- Final integration & polish
+
+
+▶️ How To Run
+- Clone repo
+- Open in Android Studio (latest stable)
+- Build & Run
+- Scroll to observe real-time collapse behavior
